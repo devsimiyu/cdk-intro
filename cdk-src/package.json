@@ -1,0 +1,15 @@
+{
+  "name": "cdk-src",
+  "version": "1.0.0",
+  "license": "ISC",
+  "dependencies": {
+    "aws-lambda": "^1.0.7",
+    "aws-sdk": "^2.1294.0"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.109",
+    "@types/aws-sdk": "^2.7.0",
+    "@types/node": "^18.11.18",
+    "typescript": "^4.9.4"
+  }
+}

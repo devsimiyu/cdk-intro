@@ -1,0 +1,31 @@
+version: '2.9'
+
+services:
+
+  cdk-intro-localstack:
+    image: localstack/localstack
+    container_name: cdk-intro-localstack
+    hostname: cdk-intro-localstack
+    healthcheck:
+      test: awslocal cloudformation list-stacks
+      interval: 15s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    environment:
+      - SERVICES=cloudformation,apigateway,lambda,sns,sqs
+      - EAGER_SERVICE_LOADING=1
+      - LAMBDA_EXECUTOR=local
+      - LOCALSTACK_HOSTNAME=0.0.0.0
+      - DATA_DIR=/tmp/localstack/data
+      - DEBUG=1
+    volumes:
+      - cdk-intro-localstack-volume:/tmp/localstack
+      - ~/.aws:/root/.aws
+    ports:
+      - '2001:4566'
+
+volumes:
+
+  cdk-intro-localstack-volume:
+    driver: local
